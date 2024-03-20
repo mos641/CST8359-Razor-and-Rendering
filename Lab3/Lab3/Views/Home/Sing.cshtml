@@ -1,0 +1,46 @@
+﻿@*
+    In Sing view, use Razor to draw the lyrics to the children’s song ’10 Green Bottles…’ (see: https://en.wikipedia.org/wiki/Ten_Green_Bottles)
+        Use the value user entered for the bottles in SongForm view, and you already stored in session or ViewData/ViewBag
+        Note that the plural/singular forms of ‘bottle’ should be correct when you count down to 1, and when thee is no bottle left
+    Add a MVC Form in Sing view, with a button to let the user play again
+        Play Again, should take the user back to the SongForm view
+*@
+
+@{
+    ViewData["Title"] = "Singing...";
+}
+
+<form asp-controller="Home" asp-action="SongForm" method="post">
+    <input type="submit" value="Play Again" />
+</form>
+<br />
+
+@{
+    int totalBottles = Convert.ToInt32(ViewBag.bottles);
+    int currentBottles = totalBottles;
+
+    string song = "{0} green bottle{1} hanging on the wall,\n" +
+    "{0} green bottle{1} hanging on the wall,\n" +
+    "And if one green bottle should accidentally fall,\n" +
+    "There'll be {2} green bottle{3} hanging on the wall.\n\n";
+
+
+    for (currentBottles = totalBottles; currentBottles > 2; currentBottles--)
+    {
+    @: <span>@String.Format(song, currentBottles, "s", currentBottles - 1, "s")</span>
+    }
+
+    if (currentBottles == 2) {
+    @: <span>@String.Format(song, currentBottles, "s", currentBottles - 1, "")</span>
+        currentBottles--;
+    }
+
+    if (currentBottles == 1)
+    {
+    @: <span><p>@String.Format(song, currentBottles, "", "no", "s")</span>
+        currentBottles--;
+    }
+
+    @: <span>There are no green bottles hanging on the wall.</span>
+
+}

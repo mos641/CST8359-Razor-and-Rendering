@@ -1,0 +1,44 @@
+﻿@*
+    Add a MVC Form in CreatePerson and collect the following information from the user
+        First Name
+        Last Name
+        Age
+        Email Address
+        Password (should be masked as you type, and it should not be shown to the user on the DisplayPerson.cshtml – see below)
+        Description of person
+    Once collected, post the data back to DisplayPerson action in HomeController
+*@
+@{
+    ViewData["Title"] = "Create Person";
+}
+<h2>Create a Person</h2>
+<form asp-controller="Home" asp-action="DisplayPerson" method="post">
+    <table>
+        <tr>
+            <td>First Name: </td>
+            <td><input type="text" name="fName" required="required" /></td>
+        </tr>
+        <tr>
+            <td>Last Name: </td>
+            <td><input type="text" name="lName" required="required" /></td>
+        </tr>
+        <tr>
+            <td>Age: </td>
+            <td><input type="number" name="age" step="1" min="0" max="120" required="required" /></td>
+        </tr>
+        <tr>
+            <td>Email Address: &nbsp; </td>
+            <td><input type="email" name="EmailAddress" required="required" /></td>
+        </tr>
+        <tr>
+            <td>Password: </td>
+            <td><input type="password" name="password" required="required" /></td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td><input type="text" name="desc" required="required" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="Create" required="required" />
+</form>
+<br />

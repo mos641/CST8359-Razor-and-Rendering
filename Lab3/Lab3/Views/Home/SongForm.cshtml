@@ -1,0 +1,15 @@
+﻿@*
+    SongForm view should contain an MVC form that gets the number of bottles from user and passes them down to the action called ‘Sing’ in HomeController
+        Make sure you limit the user to the inclusive range of 50 to 100 bottles
+*@
+
+@{
+    ViewData["Title"] = "Green Bottles";
+}
+
+<form asp-controller="Home" asp-action="Sing" method="post">
+    Enter the number of bottles between 50 and 100: &nbsp;
+    <input type="number" name="bottles" step="1" min="50" max="100" required="required" />
+    <input type="submit" value="Sing!" />
+</form>
+<br />

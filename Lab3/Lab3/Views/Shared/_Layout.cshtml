@@ -1,0 +1,50 @@
+﻿@*
+    Add a hyperlink in the layout header that points to the SongForm view
+    @Html.ActionLink("Show the song!", "SongForm", "Home")
+    11. Add a hyperlink in the layout header that points to the Index view
+    @Html.ActionLink("Home", "Index", "Home")
+*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>WELCOME TO LAB 3</h1>
+        <p>My name is: A, Mostapha</p>
+        <br />
+        @Html.ActionLink("Home", "Index", "Home") &nbsp; | &nbsp; @Html.ActionLink("Show the song!", "SongForm", "Home") &nbsp; | &nbsp; @Html.ActionLink("Persons", "CreatePerson", "Home")
+        <br />
+    </header>
+
+    <div id="main">
+        @RenderBody()
+    </div>
+    
+    <footer>
+        How the CSS file was added:
+        <ul>
+            <li>the CSS file is a static file, they are accessed using a path relative to the root</li>
+            <li>static files are contained in the root directory</li>
+            <li>default is static files are stored whithin a "wwwroot" folder</li>
+            <li>right click the project and add a folder named "wwwroot"</li>
+            <li>then right click the newly created folder and adding another new folder whithin named "css"</li>
+            <li>whithin the latest created folder, create a new item and select the stylesheet preset.</li>
+            <li>make sure the style sheet is linked in the layout file</li>
+        </ul>
+
+        How the _Layout file was added:
+        <ul>
+            <li>the _Layout file is the default layout for the app</li>
+            <li>convention dictates to place it in a "Shared" folder whithin the "Views" folder</li>
+            <li>right click the previously created "Views" folder and add a new folder, naming it "Shared"</li>
+            <li>whithin the latest created folder, create a new item and select the "Razor Layout" preset </li>
+        </ul>
+    </footer>
+</body>
+</html>

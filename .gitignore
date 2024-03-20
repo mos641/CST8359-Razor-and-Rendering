@@ -1,0 +1,6 @@
+# VS files
+bin/
+obj/
+.vs/
+PublishProfiles/
+ServiceDependencies/
